@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BD - Ong</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="PapaParse-5.0.2/PapaParse-5.0.2/papaparse.min.js"></script>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="nav">
+            <a href="formulario.html"> Formulario </a>
+            <a href="Vendas.html"> Vendas </a>
+        </div>
+        <form action="">
+            <label for="fileInput">Importar DB</label>
+            <input type="file" id="fileInput">
+            <button onclick="importFile()">Importar</button>
+            
+        </form>
+
+        <div id="editUserDialog" style="display: none;">
+            <h2>Editar Usuário</h2>
+            <form id="editUserForm">
+              <input type="hidden" id="editUserId">
+              <label for="editProduto">Produto:</label>
+              <input type="text" id="editProduto" required>
+              <label for="editQualidade">Qualidade:</label>
+              <input type="text" id="editQualidade" required>
+              <label for="editValor">Valor:</label>
+              <input type="text" id="editValor" required>
+              <label for="editQuantidade">Quantidade:</label>
+              <input type="text" id="editQuantidade" required>
+              <label for="editDescricao">Descrição:</label>
+              <input type="text" id="editDescricao" required>
+              <button type="button" onclick="updateUserData()">Atualizar</button>
+              <button type="button" onclick="closeEditUserDialog()">Cancelar</button>
+            </form>
+        </div>
+        <div id="armazenamentos">
+            <label for="espacoLivre">Espaço Livre:</label><p id="espacoLivre"></p>
+            <label for="espacoUsado">Espaço Usado:</label><p id="espacoUsado"></p>
+        </div>
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Hora</th>
+                    <th>ID</th>
+                    <th>Produto</th>
+                    <th>Qualidade</th>
+                    <th>Valor</th>
+                    <th>Quantidade</th>
+                    <th>Genero</th>
+                    <th>Descrição</th>
+                    <th>Imagem</th>
+                    <th>Valor em estoque</th>
+                    <th>Editar</th>
+                    <th>Deletar</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+
+            </tbody>
+        </table>
+        <button id="exportButton">Exportar</button>
+        <button id="updateButton">Atualizar</button>
+    </div>
+    
+    
+
+    <div id="error-message" style="color: red;"></div>
+ 
+ 
+    <script src="importBD.js"></script>
+    <script>
+        // Chame a função para recuperar os dados do IndexedDB
+        getDataFromIndexedDB(); 
+    </script>
+</body>
+</html>
